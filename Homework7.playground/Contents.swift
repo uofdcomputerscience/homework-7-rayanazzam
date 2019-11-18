@@ -13,16 +13,18 @@ import Foundation
 // The publication year, as a string (because dates are hard)
 // A string for the URL for an image for the book cover
 
+//
+// Remember that this structure needs to conform to the `Encodable` protocol.
+// Using `Codable` more generally will be useful, as by doing this you'll
+// be able to reuse this struct in Project Three.
+
 struct Book: Codable {
   let title: String
   let author: String
   let year: String
   let URL: String
 }
-//
-// Remember that this structure needs to conform to the `Encodable` protocol.
-// Using `Codable` more generally will be useful, as by doing this you'll
-// be able to reuse this struct in Project Three.
+
 
 func postBook (book: Book) {
   let urlString = "https://uofd-tldrserver-develop.vapor.cloud/books"
@@ -55,17 +57,31 @@ let bookTwo = Book (title: "Hunger Games",
                     year: "2008", 
                     URL: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1447303603l/2767052.jpg")
 
+let bookThree = Book (title: "Life of pi", 
+               author: "Yann Martel", 
+               year: "2001", 
+               URL: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1320562005l/4214.jpg")
 
+let bookFour = Book (title: "Hacking Darwin", 
+               author: "Jamie Metzl", 
+               year: "2019", 
+               URL: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1548399156l/40597264.jpg")
 
-   
-                    
-
+let bookFive = Book (title: "Einstien", 
+               author: "Walter Isaacson", 
+               year: "2007", 
+               URL: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1529200634l/37946247._SX318_.jpg") 
+                        
 // MARK: - STEP THREE
 
 var books = [Book]()
-books.append(Country())
-books.append(Country())
+books.append(bookOne)
+books.append(bookTwo)
+books.append(bookThree)
+books.append(bookFour)
+books.append(bookFive)
 
+//function defined above
 for bookObject in books {
   postBook (book: bookObject)
 }
