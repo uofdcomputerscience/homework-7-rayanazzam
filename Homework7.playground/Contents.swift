@@ -12,11 +12,32 @@ import Foundation
 // An author, which is a string
 // The publication year, as a string (because dates are hard)
 // A string for the URL for an image for the book cover
+
+struct Book: Codable {
+  let title: String
+  let author: String
+  let year: String
+  let URL: String
+}
 //
 // Remember that this structure needs to conform to the `Encodable` protocol.
 // Using `Codable` more generally will be useful, as by doing this you'll
 // be able to reuse this struct in Project Three.
 
+func postBook (book: Book) {
+  let urlString = "https://uofd-tldrserver-develop.vapor.cloud/books"
+  let url = URL(string: urlString)!
+  var urlRequest = URLRequest(url: url)
+
+  urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+  urlRequest.httpBody = try? JSONEncoder().encode(book)
+  urlRequest.httpMethod = "POST"
+  
+  let task = URLSession(configuration: .ephemeral).dataTask(with: urlRequest)
+  task.resume()
+
+}
+                 
 // MARK: - STEP TWO
 
 // Once you've defined this structure, you'll need to define a couple of
@@ -24,7 +45,30 @@ import Foundation
 // have an amusing dataset to work with, each student is requested to
 // create five different books for this database.
 
+let bookOne = Book (title: "Crime and Punishment", 
+               author: "Fydor Dostoevsky", 
+               year: "1993", 
+               URL: "https://prodimage.images-bn.com/pimages/9781548747329_p0_v2_s600x595.jpg")
+
+let bookTwo = Book (title: "Hunger Games",
+                    author: "Suzzane Collins", 
+                    year: "2008", 
+                    URL: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1447303603l/2767052.jpg")
+
+
+
+   
+                    
+
 // MARK: - STEP THREE
+
+var books = [Book]()
+books.append(Country())
+books.append(Country())
+
+for bookObject in books {
+  postBook (book: bookObject)
+}
 
 // Now we need to publish this data to the server.
 
