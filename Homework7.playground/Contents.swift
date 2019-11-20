@@ -19,10 +19,11 @@ import Foundation
 // be able to reuse this struct in Project Three.
 
 struct Book: Codable {
+  let id: Int?
   let title: String
   let author: String
-  let year: String
-  let URL: String
+  let published: String
+  let imageURLString: String
 }
 
 
@@ -47,30 +48,40 @@ func postBook (book: Book) {
 // have an amusing dataset to work with, each student is requested to
 // create five different books for this database.
 
-let bookOne = Book (title: "Crime and Punishment", 
+let bookOne = Book (
+               id: nil,
+               title: "Crime and Punishment", 
                author: "Fydor Dostoevsky", 
                year: "1993", 
-               URL: "https://prodimage.images-bn.com/pimages/9781548747329_p0_v2_s600x595.jpg")
+               imageURLString: "https://prodimage.images-bn.com/pimages/9781548747329_p0_v2_s600x595.jpg")
 
-let bookTwo = Book (title: "Hunger Games",
+let bookTwo = Book (
+                    id: nil,
+                    title: "Hunger Games",
                     author: "Suzzane Collins", 
                     year: "2008", 
-                    URL: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1447303603l/2767052.jpg")
+                    imageURLString: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1447303603l/2767052.jpg")
 
-let bookThree = Book (title: "Life of pi", 
+let bookThree = Book (
+               id:nil,
+               title: "Life of pi", 
                author: "Yann Martel", 
                year: "2001", 
-               URL: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1320562005l/4214.jpg")
+               imageURLString: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1320562005l/4214.jpg")
 
-let bookFour = Book (title: "Hacking Darwin", 
+let bookFour = Book (
+               id: nil,
+               title: "Hacking Darwin", 
                author: "Jamie Metzl", 
                year: "2019", 
-               URL: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1548399156l/40597264.jpg")
+               imageURLString: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1548399156l/40597264.jpg")
 
-let bookFive = Book (title: "Einstien", 
+let bookFive = Book (
+               id:nil,
+               title: "Einstien", 
                author: "Walter Isaacson", 
-               year: "2007", 
-               URL: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1529200634l/37946247._SX318_.jpg") 
+               published: "2007", 
+               imageURLString: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1529200634l/37946247._SX318_.jpg") 
                         
 // MARK: - STEP THREE
 
